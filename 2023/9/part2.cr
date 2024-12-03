@@ -54,6 +54,7 @@ end
 
     #puts ans
   end
+  
   sum += findleft(ans)
 end
 

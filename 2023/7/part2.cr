@@ -1,4 +1,4 @@
-#advent of code day 7 part 1
+#advent of code day 7 part 2
 
 class Hand
   def initialize(@cards : Array(Int32), @rank : Int32, @score : Int32)
