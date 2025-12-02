@@ -1,0 +1,28 @@
+(defun split (s)
+ (values (char s 0)
+	 (subseq s 1)))
+
+(defun solve ()
+  (let ((sum 0)
+	(rotate 50))
+  (with-open-file (in "~/projects/Advent-of-Code/2025/day1/input.txt")
+    (loop for line = (read-line in nil nil)
+	  while line
+	  do
+	     (multiple-value-bind (x y) (split line)
+	       ;;the smart way, gives me a number 1 too high for some reason
+	       ;;(if (char-equal x #\L)
+		       ;;(incf sum (ceiling (/ (- (parse-integer y) (mod rotate 100)) 100)))
+		       ;;(incf sum (floor (/ (+ (parse-integer y) (mod rotate 100)) 100)))
+	       ;;)
+	       (loop repeat (parse-integer y)
+		     do 
+	       (if (char-equal x #\L)
+		   (decf rotate 1)
+		   (incf rotate 1))
+	       (if (= (mod rotate 100) 0)
+		   (incf sum 1))
+	       ))
+	  ))
+  (format t "~D~%" sum)
+  ))
